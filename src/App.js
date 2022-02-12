@@ -16,6 +16,7 @@ function App() {
 	const [value, setValue] = useState("Random Person");
 
 	const getPerson = async () => {
+		setLoading(true);
 		const response = await fetch(url);
 		const data = await response.json();
 		const person = data.results[0];
@@ -57,19 +58,6 @@ function App() {
 			setTitle(newValue);
 		}
 	};
-	if (loading) {
-		return (
-			<main>
-				<div className="block bcg-black" style={{ paddingTop: "350px" }}>
-					<div className="container">
-						<h1 style={{ position: "relative", marginBottom: "0" }}>
-							Loading...
-						</h1>
-					</div>
-				</div>
-			</main>
-		);
-	}
 	return (
 		<main>
 			<div className="block bcg-black" style={{ paddingTop: "350px" }}>
